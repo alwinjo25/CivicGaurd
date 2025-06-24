@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.div1, .div2 {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.div1 h1 {
+    font-size: 30px;
+    margin: 0;
+    color: #4caf50;
+}
+
+.div1 img {
+    vertical-align: middle;
+}
+
+.div2 h2 {
+    font-size: 24px;
+    color: #4caf50;
+}
+
+table {
+    font-size: 18px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+}
+
+button {
+    width: 25%;
+    padding: 10px;
+    font-size: 24px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 0;
+}
+
+.btn_home{
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}

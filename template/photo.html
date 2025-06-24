@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint List</title>
+    <style>
+        /* CSS styles remain the same */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #4caf50;
+            color: white;
+            width: 1000px;
+            height: auto;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+        .box1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .box1 h1 {
+            margin-top: 0;
+        }
+        .box1 img {
+            border-radius: 100%;
+            width: 180px;
+            height: 180px;
+        }
+        .box1 input[type="text"] {
+            width: 200px;
+            height: 40px;
+            border-radius: 15px;
+            border: 2px solid #ccc;
+            padding-left: 10px;
+            font-size: 18px;
+        }
+        .box2 {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+        }
+        .img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .complaint-entry {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .view-btn {
+            text-align: center;
+        }
+        .view-btn button {
+            width: 100px;
+            height: 40px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .view-btn button:hover {
+            background-color: #45a049;
+        }
+        /* .. */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <!-- Content remains the same -->
+            <!-- ... -->
+        </div>
+        <div class="box2">
+            <h3>Complaint list</h3>
+            {% for row in data %}
+            <div class="complaint-entry">
+                <div class="img-container">
+                    <!-- Set the source of the image tag to the view_photo route with the photo_id parameter -->
+                    <img src="{{ url_for('view_photo', photo_id=row[4]) }}" class="profile-photo">
+                </div>
+                <table>
+                    <tr>
+                        <th>Complaint Type:</th>
+                        <td><label>{{ row[0] }}</label></td>
+                    </tr>
+                    <tr>
+                        <th>Complaint Code:</th> 
+                        <td><label>{{ row[1] }}</label></td>
+                    </tr>
+                    <tr>
+                        <th>Complaint Description:</th>
+                        <td><label>{{ row[2] }}</label></td>
+                    </tr>
+                </table> 
+                <div class="view-btn">
+                    <form method="POST" action="/view_complaint">
+                        <input type="hidden" name="complaint_no" value="{{ row[1] }}">
+                        <input type="hidden" name="complaint_type" value="{{ row[0] }}">
+                        <button type="submit">VIEW</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

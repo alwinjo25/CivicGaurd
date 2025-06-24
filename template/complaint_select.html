@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/complaint_select.css">
+    
+    <script>
+        window.onload = function() {
+            var textBox = document.getElementById('comp_type');
+            var buttons = document.querySelectorAll('.container button');
+
+            // Add click event listeners to all buttons
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Set the value of the clicked button to the text box
+                    textBox.value = button.textContent.trim(); // Trimming removes extra whitespace
+                });
+            });
+
+           /* document.getElementById('submitBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                var complaintType = textBox.value;
+            });*/
+
+        };
+    </script>
+    <style>
+        #navbar {
+            background-color: #45a049;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        #navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: #266e2a;
+        }
+
+        #navbar a:hover {
+            color: black;
+            background-color: yellow;
+            box-shadow: 0px 12px 14px 0px #333;
+            transition: 0.3s;
+        }
+
+        #navbar .user_profile {
+            float: left;
+            background-color: transparent;
+        }
+
+        #navbar .user_profile:hover {
+            background-color: transparent;
+            box-shadow: none;
+            transition: 0.3s;
+        }
+
+        #navbar a img {
+            width: 50px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div> 
+            <a href="" class="user_profile"><img src="./preview - Copy.jpg" alt="User"></a>
+        </div>
+        <div>
+            <a href="/template/login.html">Logout</a>
+            <a href="">Contact</a>
+            <a href="">About</a>
+            <a href="/template/Home.html">Home</a>
+        </div>        
+    </div>
+    <form method="POST" action="/select">
+        <div class="container">
+            <h1>CIVIC GUARD</h1>
+            <h1>Complaint Type</h1>
+            <div class="container">
+                <button id="selectBtn"><img src="/static/elc.png"  height="50" width="100">Electrical and power</button><br><br>
+                <button id="selectBtn"><img src="/static/land.png" height="50" width="100">Land and revenue</button><br><br>
+                <button id="selectBtn"><img src="/static/law.png" height="50" width="100">Law and Order complaint</button><br></div>
+                <button id="selectBtn">You can type your complaint Type</button><br><br>
+                <input type="text" name="comp_type" id="comp_type" hidden>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

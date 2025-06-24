@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='EditProfile_design.css') }}">
+</head>
+<body>
+    <div>
+        <h1>CIVIC GUARD</h1>
+        <h1>EDIT PROFILE</h1>
+        <form id="Edit_profile" method="POST" action="/userProfile">
+            <table>
+                <tr>
+                    <th>Email: <input type="email" name="email"></th>
+                </tr>
+                <tr>
+                    <th>Phone no: <input type="text" name="phone"></th>
+                </tr>
+            </table>
+
+            <a href="pwd.html"><input type="button" value="Change Password"></a><br>
+            or <br><br>
+            <input type="button" value="OK">
+        </form>
+    </div>
+
+    <script>
+        // Function to preview photo
+        function previewPhoto(input) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var dataURL = reader.result;
+                var output = document.getElementById('profile-photo-preview');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+</body>
+</html>

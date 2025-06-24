@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/EditProfile_design.css">
+</head>
+<body>
+    <div>
+        <h1>CIVIC GUARD</h1>
+        <h1>EDIT PROFILE</h1>
+        <form method="POST" action="/userProfile"></form>
+            <div class="upload-container">
+                <label for="profile-photo-upload" class="profile-photo-container">
+                    <img id="profile-photo-preview" src="placeholder.jpg" alt="Profile Photo" class="profile-photo">
+                </label>
+                <input type="file" id="profile-photo-upload" name="profile_photo" accept="image/*" onchange="previewPhoto(event)">
+                <br>
+                <label for="profile-photo-upload" class="upload-btn">Upload</label>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Username: <input type="text" disabled></th>
+                </tr>
+                <tr>
+                    <th>Email: <input type="email" disabled></th>
+                </tr>
+                <tr>
+                    <th>Phone no: <input type="text" disabled></th>
+                </tr>
+            </table>
+            <a href="/template/pwd.html"><input type="button" value="Change Password"></a><br>
+
+                            or <br><br>
+            
+            <input type="button" value="OK">
+        </form>
+</body>
+</html>

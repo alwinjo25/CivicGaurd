@@ -1,0 +1,94 @@
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    margin: 100;
+}
+
+
+.div2 {
+    margin: auto;
+    width: 100%;
+    height: max-content; /* Adjust max-width as per your design */
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px; /* Add padding */
+    transition: all 0.3s ease; /* Transition for smooth animation */
+}
+
+/*a {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    background-color: #266e2a;
+}
+
+a:hover {
+    color:black;
+    background-color: yellow;
+    box-shadow: 0px 12px 14px 0px #333;
+    transition: 0.3s;
+}*/
+
+.div2 a input{
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    background-color: #266e2a;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.div2 a input:hover{
+    color:black;
+    background-color: yellow;
+    box-shadow: 0px 12px 14px 0px #333;
+    transition: 0.3s;
+}
+
+h1{
+    color: #fff;
+}
+
+h1 img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%; /* Make the logo round */
+    border-color: #333;
+}
+
+/* Hover effect */
+.div1:hover, .div2:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.logo{
+    height: 200px;
+    width: 200px;
+    border-radius: 120px;
+    border: 5px solid #4caf50;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: -60px;
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .div1, .div2 {
+        width: 80%;
+        max-width: 300px; /* Adjust max-width for smaller screens */
+    }
+}

@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* Set the background color to white */
+}
+
+.container {
+    height: auto;
+    width: 80%;
+    max-width: 400px; /* Set a max-width for responsiveness */
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #45a049; 
+}
+
+button {
+    background-color: #45a049; /* Set the button background color to #45a049 */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #4caf50; /* Change the button background color on hover to #4caf50 */
+}
+
+button img {
+    max-height: 40px;
+    max-width: 80px; /* Adjust max-width for responsiveness */
+    vertical-align: middle;
+    margin-right: 10px;
+}

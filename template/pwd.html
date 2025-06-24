@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="/static/pwd_design.css">
+</head>
+<body>
+    <form method="POST" action="/changePassword" onsubmit="return validatePassword()">
+        <div>
+            <table>
+                <tr>
+                    <th>Old Password: <input type="password" name="old_pwd" required></th>
+                </tr>
+                <tr>
+                    <th>New Password: <input type="password" name="new_pwd" id="new_pwd" required></th>
+                </tr>
+                <tr>
+                    <th>Confirm Password: <input type="password" id="cnf_pwd_txt" name="cnf_pwd_txt" required></th>
+                </tr>
+            </table>
+            <input type="submit" value="OK">
+        </div>
+    </form>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("new_pwd").value;
+            var confirmPassword = document.getElementById("cnf_pwd_txt").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

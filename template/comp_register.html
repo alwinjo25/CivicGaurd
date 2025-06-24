@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy and Power Complaint</title>
+    <link rel="stylesheet" href="/static/comp_register copy.css">
+
+    <style>
+        #navbar {
+            background-color: #45a049;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        #navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: #266e2a;
+        }
+
+        #navbar a:hover {
+            color: black;
+            background-color: yellow;
+            box-shadow: 0px 12px 14px 0px #333;
+            transition: 0.3s;
+        }
+
+        #navbar .user_profile {
+            float: left;
+            background-color: transparent;
+        }
+
+        #navbar .user_profile:hover {
+            background-color: transparent;
+            box-shadow: none;
+            transition: 0.3s;
+        }
+
+        #navbar a img {
+            width: 50px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar">
+        <div>
+            <a href="" class="user_profile"><img src="./preview - Copy.jpg" alt="User"></a>
+        </div>
+        <div>
+            <a href="/template/login.html">Logout</a>
+            <a href="">Contact</a>
+            <a href="">About</a>
+            <a href="/template/Home.html">Home</a>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>{{ value_to_pass }}</h1>
+    </div>
+    <div class="container">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <!-- Complaint form -->
+        <form id="complaint-form" method="POST" action="{{ url_for('submit_complaint') }}"
+            enctype="multipart/form-data">
+            <div class="upload-container">
+                <!-- Profile photo upload -->
+                <label for="profile-photo-upload" class="profile-photo-container">
+                    <img id="profile-photo-preview" src="placeholder.jpg" alt="Profile Photo" class="profile-photo">
+                </label>
+                <input type="file" id="profile-photo-upload" name="profile-photo-upload" accept="image/*"
+                    onchange="previewPhoto(event)" required>
+                <br>
+                <label for="profile-photo-upload" class="upload-btn">Upload</label>
+            </div>
+            <!-- Complaint text area -->
+            <label for="complaint-text">Type your complaint:</label>
+            <textarea name="complaint-text" id="complaint-text" cols="30" rows="6" required></textarea>
+            <hr>
+            <table>
+                <tr>
+                    <!--complaint type -->
+                    <th>Complaint Type:</th>
+                    <td><input type="text" id="complaint_type" name="complaint_type" value="{{ value_to_pass }}"
+                            required></td>
+                </tr>
+                <tr>
+                    <!-- Email input -->
+                    <th>Complaint Configuration Email:</th>
+                    <td><input type="email" id="ccemail_txt" name="ccemail_txt" required></td>
+                </tr>
+                <tr hidden>
+                    <!-- Complaint Code input (disabled) -->
+                    <th>Complaint Code:</th>
+                    <td><input type="text" id="ccode_txt" name="ccode_txt"></td>
+                </tr>
+                <tr>
+                    <!-- Register button -->
+                    <td colspan="2" style="text-align: center;">
+                        <form method="POST" action="/submit_complaint">
+                            <button type="submit">Register</button>
+                        </form>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+    <script>
+
+        // Function to preview photo
+        function previewPhoto(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function () {
+                var dataURL = reader.result;
+                var output = document.getElementById('profile-photo-preview');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);   
+        }
+
+        // Function to submit the form
+        function submitForm() {
+            var complaintType = document.getElementById('complaint-text').value;
+            // Redirect to the next page with complaint type as query parameter
+
+        }
+
+        // Retrieve complaint type from URL query parameter and set it in the header
+        window.onload = function () {
+            var params = new URLSearchParams(window.location.search);
+            var complaintType = params.get('complaintType');
+            if (complaintType) {
+                document.getElementById('complaintTypeHeader').textContent = complaintType;
+            }
+
+            if (document.getElementById('complaint_type').value === "You can type your complaint Type") {
+                document.getElementById('complaint_type').value = "";
+            }
+        };
+    </script>
+</body>
+
+</html>

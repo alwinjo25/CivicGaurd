@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="../static/NewAccount_design.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("pwd_txt").value;
+            var confirmPassword = document.getElementById("cnf_pwd_txt").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form method="POST" action="/register" onsubmit="return validatePassword();">
+        <div class="container">
+            <h1>Create New Account</h1>
+            <table>
+                <tr>
+                    <th>Username: <input type="text" name="uname_txt" required></th>
+                </tr>
+                <tr>
+                    <th>Password: <input type="password" id="pwd_txt" name="pwd_txt" required></th>
+                </tr>
+                <tr>
+                    <th>Confirm Password: <input type="password" id="cnf_pwd_txt" name="cnf_pwd_txt" required></th>
+                </tr>
+                <tr>
+                    <th>Email: <input type="email" name="email" required></th>
+                </tr>
+                <tr>
+                    <th>Phone no: <input type="text" name="phone" required></th>
+                </tr>
+            </table>
+            <button type="submit" >Register</button>
+        </div>
+    </form>
+</body>
+</html>

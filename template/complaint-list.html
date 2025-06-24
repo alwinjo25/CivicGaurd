@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint List</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #4caf50;
+            color: white;
+            width: 1000px;
+            height: auto;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+        .box1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .box1 h1 {
+            margin-top: 0;
+        }
+        .box1 img {
+            border-radius: 100%;
+            width: 180px;
+            height: 180px;
+        }
+        .box1 form{
+            display: inline;
+        }
+        .box1 .align-input{
+            height: 40px;
+            width: 200px;
+            font-size: 15px;
+            border-style: solid;
+            border-color: #45a049;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+        .box1 .align-submit{
+            height: 40px;
+            width: 80px;
+            font-size: 15px;
+            border-style: solid;
+            border-color: #45a049;
+            border-radius: 10px;
+        }
+        .box2 {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+        }
+        .img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .complaint-entry {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .view-btn {
+            text-align: center;
+        }
+        .view-btn button {
+            width: 100px;
+            height: 40px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .view-btn button:hover {
+            background-color: #45a049;
+        }
+      
+       
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <h1>Welcome to Civic Guard</h1>
+            <img src="/static/final_cg_logo.png" alt="logo">
+            <br>
+            <!-- Form for searching by code -->
+            <form action="/search_by_code" method="POST" >
+                <input type="text" name="search_code" placeholder="Search by code..." class="align-input" >
+                <input type="submit" value="Search" class="align-submit">
+            </form>
+
+            <!-- Form for searching by complaint type -->
+            <form action="/search_by_type" method="POST" >
+                <input type="text" name="search_type" placeholder="Search by complaint type" class="align-input">
+                <input type="submit" value="Search" class="align-submit">
+            </form>
+
+        </div>
+        <div class="box2">
+            <h3>Complaint list</h3>
+            {% for row in data %}
+            <div class="complaint-entry">
+                <div class="img-container">
+                    <img src="{{ url_for('get_image', image_id=row[5])}}"  class="profile-photo">
+                </div>
+                <table>
+                    <tr>
+                        <th>Complaint Type:</th>
+                        <td><label>{{row[0]}}</label></td>
+                    </tr>
+                    <tr>
+                        <th>Complaint Code:</th> 
+
+                        <td><label>{{ row[1] }}</label></td>
+                    </tr>
+                    <tr>
+                        <th>Complaint Description:</th>
+                        <td><label>{{ row[3] }}</label></td>
+                    </tr>
+                </table> 
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+       

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <link rel="stylesheet" href="/static/register_success.css">
+
+    <style>
+        #navbar {
+            background-color: #45a049;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        #navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: #266e2a;
+        }
+
+        #navbar a:hover {
+            color: black;
+            background-color: yellow;
+            box-shadow: 0px 12px 14px 0px #333;
+            transition: 0.3s;
+        }
+
+        #navbar .user_profile {
+            float: left;
+            background-color: transparent;
+        }
+
+        #navbar .user_profile:hover {
+            background-color: transparent;
+            box-shadow: none;
+            transition: 0.3s;
+        }
+
+        #navbar a img {
+            width: 50px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar">
+        <div> 
+            <a href="" class="user_profile"><img src="./preview - Copy.jpg" alt="User"></a>
+        </div>
+        <div>
+            <a href="/template/login.html">Logout</a>
+            <a href="">Contact</a>
+            <a href="">About</a>
+            <a href="/template/Home.html">Home</a>
+        </div>        
+    </div>
+
+    <div class="div1">
+        <h1>Register Successfully <img src="/static/verify.png" alt="" height="50" width="50"></h1>
+    </div>
+    <div class="div2">
+        <table style="color: #4caf50;">
+            <tr>
+                <th>Your complaint No: <input type="text" name="youcomNo_txt" value="{{youcomNo_txt}}" disabled></th>
+            </tr>
+            <tr>
+                <th>Complaint Type: <input type="text" name="ctype_txt" value="{{ctype_txt}}" disabled><br></th>
+            </tr>
+
+            <tr>
+                <th> Complaint Description: <textarea name="comp_text" id="comp_text" cols="30" rows="10" disabled>
+                    {{comp_text}}</textarea><br></th>
+            </tr>
+            <tr>
+                <th>Date and Time: <input type="datetime-local" name="input_date" id="input_date"></th>
+            </tr>
+            <tr>
+                <!-- mail button -->
+                <td colspan="2" style="text-align: center;">
+                    <form method="POST" action="/send_email">
+                        <button type="submit">Send Mail</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <h2>Thank You for Complaint</h2>
+    </div>
+    <div>
+        <center><button id="button" name="savepdf_btn" type="submit" onclick="saveComplaint()">SAVE COMPLAINT DOC</button></center>
+    </div>
+    <script>
+
+        function saveComplaint() {
+
+            var doc = new jsPDF();
+
+            var complaintType = document.getElementsByName("ctype_txt")[0].value;
+            var complaintText = document.getElementsByName("comp_text")[0].value;
+            var dateTime = document.getElementsByName("input_date")[0].value;
+
+
+            doc.setFont("helvetica");
+            doc.setFontSize(12);
+
+
+            doc.setFontType("bold");
+            doc.setTextColor(0, 0, 0);
+            doc.text("CIVIC GUARD", 15, 20);
+
+
+            doc.setFontType("normal");
+            doc.text("Date: " + dateTime.substring(0, 10), 15, 30);
+
+
+            doc.text("To,", 15, 40);
+            doc.text("Municipal Corporation", 15, 45);
+            doc.text("City Name", 15, 50);
+
+
+            doc.text("Subject: Complaint regarding " + complaintType, 15, 60);
+
+
+            doc.text("Dear Sir/Madam,", 15, 70);
+
+            doc.fromHTML("<pre>" + complaintText + "</pre>", 15, 80);
+
+            doc.text("Thank you for your attention to this matter.", 15, 150);
+
+            doc.text("Yours sincerely,", 15, 160);
+            doc.text("Your Name", 15, 170);
+
+            doc.save('complaint_details.pdf');
+
+            console.log("PDF saved successfully!"); // Add this line for debugging
+        }
+
+        // Function to set the current date and time as default
+        function setCurrentDateTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = (now.getMonth() + 1).toString().padStart(2, '0');
+            var day = now.getDate().toString().padStart(2, '0');
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var dateTimeString = `${year}-${month}-${day}T${hours}:${minutes}`;
+            document.getElementsByName("input_date")[0].value = dateTimeString;
+        }
+
+        // Set the current date and time when the page loads
+        window.onload = function () {
+            setCurrentDateTime();
+            // Optionally, you can call saveComplaint() here if you want to automatically save the complaint details when the page loads.
+        };
+
+    </script>
+
+</body>
+
+</html>

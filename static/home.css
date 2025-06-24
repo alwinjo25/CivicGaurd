@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    height: max-content;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo{
+    border: 2px solid #45a049;
+    border-radius: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin: 0;
+    padding: 20px 0;
+}
+
+h1 img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%; /* Make the logo round */
+    border-color: #333;
+}
+
+.container input[type="button"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 300px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.container input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+.container table {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid #45a049;
+    padding: 16px 30px;
+    border-radius: 10px;
+}
+
+.container th {
+    text-align: left;
+    padding: 10px;
+}
+
+.container a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10;
+}
+
+#navbar {
+    background-color:#45a049;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+}
+
+#navbar a {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    background-color: #266e2a;
+}
+
+#navbar a:hover {
+    color:black;
+    background-color: yellow;
+    box-shadow: 0px 12px 14px 0px #333;
+    transition: 0.3s;
+}
+
+#navbar .user_profile{
+    float: left;
+    background-color: transparent;
+}
+
+#navbar .user_profile:hover{
+    background-color: transparent;
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+#navbar a img{
+    width: 50px;
+    border-radius: 50px;
+}

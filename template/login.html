@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/login_design.css">
+    <style>
+        /* Additions to the existing CSS */
+       
+    </style>
+</head>
+<body bgcolor="white">
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="container">
+        <div class="left-content">
+            <img src="/static/login.png" alt="Image" width="100%" height="100%">
+        </div>
+        <div class="right-content">
+            <form method="POST" action="/login">
+                <div class="container">
+                    <h1>CIVIC GUARD</h1>
+                    <table>
+                        <tr>
+                            <th>Username: <input type="text" name="uname_txt" required></th>
+                        </tr>
+                        <tr>
+                            <th>Password: <input type="password" name="pwd_txt" required></th>
+                        </tr>
+                    </table>
+                    <button type="submit" class="submit-btn">Login</button>
+                    <a href="{{ url_for('NewAccount') }}" class="new-account-link">Create New Account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
